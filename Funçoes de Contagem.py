@@ -1,4 +1,4 @@
-
+#Alterado no github
 #Questão1 contagem================================
 def contar_menor_que_num(lista,num):
     cont=0 
