@@ -399,4 +399,12 @@ def gerar_dicionarios_freq(lista):
                 dicio[i]+=1
         lista_auxiliar.append(dicio)
     return lista_auxiliar
+
+from random import randint
+lista=[]
+for i in range (1000):
+    lista.append(randint(1,20))
+
+print(*gerar_dicionarios_freq(lista), sep="\n")
+    
     
