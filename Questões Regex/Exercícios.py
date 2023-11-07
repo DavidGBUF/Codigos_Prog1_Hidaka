@@ -50,7 +50,23 @@ import re
 #         print("Fraca")
 # else:
 #     print("SENHA INVALIDA")
-        
+ 
+ 
+ 
+ 
+# #Questão4========================================
+# msg="mensagem de texte (91) 98118-1134 e esse teste 98118-1143" 
+# regex = re.compile(r"(\(\d{2}\)\s?)?\d{5}-?\d{4}")
+#         #            
+
+# numeros=[]
+
+    
+     
+# for i in regex.finditer(msg):
+#     numeros.append(i.group())
+    
+# print(numeros)
         
 #Questão5==================================================
 # msg='1000011'
@@ -70,8 +86,35 @@ import re
 
 
 
-#Questão7============================
-msg='David R$Galhego de Nazare'
-regex= re.compile(r"\bR\$\w*")
+# #Questão7============================
+# msg='A manutenção custa R$60, a retirada do aparelho R$485, eu só tenho R$300'
+# regex= re.compile(r"R\$\w*")
 
-print(regex.findall(msg))
+# for item in regex.finditer(msg):
+#     print(item)
+#     print(item.span())
+
+
+# #Questão9==============================
+# msg="""A chuva não mata, mas molha. O amor não se vê, sente. A amizade não se compra, constrói.
+# E pessoas como você não se esquecem, guarda-se no fundo do coração."""
+# regex = re.compile(r"[A-Z]\w*")
+# for item in regex.finditer(msg):
+#     print(item)
+#     print(item.span())
+
+
+
+# #Questão10==================================
+# msg="ACTGATG"
+
+# saida = re.fullmatch(r"[ATCG]+", msg) and\
+#     len(re.findall(r"AC", msg))>=2 and\
+#         len(re.findall(r"TG",msg ))>=2
+        
+# if saida:
+#     print('A string passou no teste')
+# else:
+#     print('A string não atende a uma ou mais das caracteristicas ')
+    
+
