@@ -95,6 +95,17 @@ import re
 #     print(item.span())
 
 
+
+#Questão8============================================
+def verificar_expressão(expressao):
+    
+
+    regex= re.compile(r'^\s*\d+(\s*[\+\-\*\/]\s*\d+)*$')
+    resultado= regex.match(expressao) 
+    return resultado is not None
+
+
+print(verificar_expressão('15+165+156+154-4585*142*18/8458/5'))
 # #Questão9==============================
 # msg="""A chuva não mata, mas molha. O amor não se vê, sente. A amizade não se compra, constrói.
 # E pessoas como você não se esquecem, guarda-se no fundo do coração."""
