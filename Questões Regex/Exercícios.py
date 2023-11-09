@@ -23,34 +23,7 @@ import re
 # print(saida)
 
 
-#Questão 3=================================
-
-# msg='nina2'
-# if len(msg)>=10 and\
-#     re.search(r"[\d]",msg) and \
-#     re.search(r"[A-Z]",msg) and\
-#     re.search(r"[a-z]",msg) and\
-#     len(re.findall(r"[!@#$%&*+=]",msg))>=3:
-#         print("MUito forte")
-        
-# elif len(msg)>=8 and\
-#     re.search(r"[\d]",msg) and \
-#     re.search(r"[A-Z]",msg) and\
-#     re.search(r"[a-z]",msg) and\
-#     re.search(r"[!@#$%&*+=]",msg):
-#         print("Forte")
-        
-# elif len(msg)>=6 and\
-#     re.search(r"[\d]",msg) and \
-#     re.search(r"[A-Z]",msg) and\
-#     re.search(r"[a-z]",msg):
-#         print("Média")
-        
-# elif len(msg)>=6:
-#         print("Fraca")
-# else:
-#     print("SENHA INVALIDA")
- 
+#
  
  
  
@@ -96,16 +69,16 @@ import re
 
 
 
-#Questão8============================================
-def verificar_expressão(expressao):
+# #Questão8============================================
+# def verificar_expressão(expressao):
     
 
-    regex= re.compile(r'^\s*\d+(\s*[\+\-\*\/]\s*\d+)*$')
-    resultado= regex.match(expressao) 
-    return resultado is not None
+#     regex= re.compile(r'^\s*\d+(\s*[\+\-\*\/]\s*\d+)*$')
+#     resultado= regex.match(expressao) 
+#     return resultado is not None
 
 
-print(verificar_expressão('15+165+156+154-4585*142*18/8458/5'))
+# print(verificar_expressão('15+165+156+154-4585*142*18/8458/5'))
 # #Questão9==============================
 # msg="""A chuva não mata, mas molha. O amor não se vê, sente. A amizade não se compra, constrói.
 # E pessoas como você não se esquecem, guarda-se no fundo do coração."""
@@ -129,3 +102,86 @@ print(verificar_expressão('15+165+156+154-4585*142*18/8458/5'))
 #     print('A string não atende a uma ou mais das caracteristicas ')
     
 
+
+
+
+#Questão 3===================================================================
+def verificar_muito_forte(msg):
+    if len(msg)>=10 and\
+    re.search(r"[\d]",msg) and \
+    re.search(r"[A-Z]",msg) and\
+    re.search(r"[a-z]",msg) and\
+    re.search(r".*[^A-Z a-z \d].*[^A-Z a-z \d].*[^A-Z a-z \d].*",msg):
+        return True
+
+
+
+#============================================================================
+
+def verificar_forte(msg):
+    if len(msg)>=8 and\
+     re.search(r"[\d]",msg) and \
+     re.search(r"[A-Z]",msg) and\
+     re.search(r"[a-z]",msg) and\
+     re.search(r"[!@#$%&*+=]",msg):
+        return True
+
+
+
+
+#============================================================================
+
+
+def verificar_moderada(msg):
+    if len(msg)>=6 and\
+     re.search(r"[\d]",msg) and \
+     re.search(r"[A-Z]",msg) and\
+     re.search(r"[a-z]",msg):
+        return True
+
+
+
+#============================================================================
+
+def verificar_fraca(msg):
+    if len(msg)>=6:
+        return True
+
+
+msg='liseuwdeug!@!!@!@gheu13427463'    
+
+
+#============================================================================
+
+
+
+print(f"A senha é {msg} e:")
+if verificar_muito_forte(msg):
+    print("A senha é muito forte")
+
+elif verificar_forte(msg):
+    print("A senha é forte")
+
+
+elif verificar_moderada(msg):
+    print("A senha é moderada")
+
+
+elif verificar_fraca(msg):
+    print("A senha é fraca")
+
+else:
+    print("A senha é inválida")
+
+
+
+#Questão extra=========================================
+
+msg='(91) 98118-1134'
+regex = re.compile(r'\(\d{2}\)\s9\d{4}-\d{4}')
+
+print(f"O número é {msg} ")
+
+if regex.fullmatch(msg):
+    print("Mascara?: Ok!")
+    print(re.sub(r"[^\d]", '', msg))
