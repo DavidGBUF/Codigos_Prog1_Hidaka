@@ -87,21 +87,22 @@ def questao_04():
 
 
 
-# def questao_5():
-#     base=ler_datatran2020()
-#     lista_via=base['tipo_pista']
-#     lista_uf=set(base['uf'])
+def questao_5():
+    base=ler_datatran2020()
+    lista_via=base['tipo_pista']
+    lista_uf=set(base['uf'])
     
-#     bd=dict()
-#     for  estado in lista_uf:
-#         bd[estado] = 0
+    bd=dict()
+    for  estado in lista_uf:
+        bd[estado] = 0
         
-#         for item, uf_atual in zip(lista_via,base['uf']):
-#             if item == "Dupla" and uf_atual==estado  :
-#                 bd[estado]+=1
+        for item, uf_atual in zip(lista_via,base['uf']):
+            if item == "Dupla" and uf_atual==estado  :
+                bd[estado]+=1
                 
-#     for i in range(3):
-#         print(f'O {i+1}° estado com mais acidentes em via dupla é {max(bd, key = bd.get)} com {max(bd.values())} acidentes')
-#         del bd[max(bd, key = bd.get)]
+    for i in range(3):
+        print(f'O {i+1}° estado com mais acidentes em via dupla é {max(bd, key = bd.get)} com {max(bd.values())} acidentes')
+        del bd[max(bd, key = bd.get)]
+
 
 
