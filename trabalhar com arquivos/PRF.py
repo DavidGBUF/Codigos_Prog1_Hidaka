@@ -1,5 +1,5 @@
 def ler_datatran2020():
-    with open ('datatran2020.csv', 'r', encoding='utf-8') as f:
+    with open ('./trabalhar com arquivos/datatran2020.csv', 'r', encoding='utf-8') as f:
         data = [linha.split(',') for linha in f]
         colunas = data[0]
         bd = dict()
@@ -16,7 +16,7 @@ def ler_datatran2020():
 
 
 def colunas():
-     with open ('datatran2020.csv', 'r', encoding='utf-8') as f:
+     with open ('./trabalhar com arquivos/datatran2020.csv', 'r', encoding='utf-8') as f:
         data = [linha.split(',') for linha in f]
         print(*data[0], sep ="\n")
 
@@ -87,13 +87,21 @@ def questao_04():
 
 
 
+# def questao_5():
+#     base=ler_datatran2020()
+#     lista_via=base['tipo_pista']
+#     lista_uf=set(base['uf'])
+    
+#     bd=dict()
+#     for  estado in lista_uf:
+#         bd[estado] = 0
+        
+#         for item, uf_atual in zip(lista_via,base['uf']):
+#             if item == "Dupla" and uf_atual==estado  :
+#                 bd[estado]+=1
+                
+#     for i in range(3):
+#         print(f'O {i+1}° estado com mais acidentes em via dupla é {max(bd, key = bd.get)} com {max(bd.values())} acidentes')
+#         del bd[max(bd, key = bd.get)]
 
 
-
-
-# questao_01()
-
-#colunas()
-#base = ler_datatran2020()
-#for chave in base:
-#    print(base[chave][:3])
