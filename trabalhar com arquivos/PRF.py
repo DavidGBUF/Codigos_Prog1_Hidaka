@@ -106,3 +106,31 @@ def questao_5():
 
 
 
+
+def questao_06():
+    base=ler_datatran2020()
+    cont_acidentes=0
+    bd_feridos=base['feridos']
+    bd_ilesos=base['ilesos']
+    for feridos, ilesos in zip(bd_feridos, bd_ilesos):
+        if feridos>ilesos:
+            cont_acidentes+=1
+    print(f"O número de acidentes em que houve mais feridos do que ilesos é de {cont_acidentes}")
+
+
+
+
+def questao_07():
+    estados_norte = [',AM,' , ',PA,', ',MA,', ',AC,', ',RO,', ',TO,', ',AP,']
+    with open ('./trabalhar com arquivos/datatran2020.csv', 'r', encoding='utf-8') as acidentes_tot:
+        conteudo=acidentes_tot.readlines()
+    with open ('./trabalhar com arquivos/datatran2020regiaonorte.csv', 'w', encoding='utf-8') as f:
+        f.write(conteudo[0])
+        for estado in estados_norte:
+            for linha in conteudo:
+                if estado in linha:
+                    f.write(linha)
+
+                    
+questao_07()
+                
