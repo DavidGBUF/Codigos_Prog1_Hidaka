@@ -18,7 +18,8 @@ def ler_datatran2020():
 def colunas():
      with open ('./trabalhar com arquivos/datatran2020.csv', 'r', encoding='utf-8') as f:
         data = [linha.split(',') for linha in f]
-        print(*data[0], sep ="\n")
+        print(data[0])
+        return data[0]
 
 
 
@@ -130,7 +131,19 @@ def questao_07():
             for linha in conteudo:
                 if estado in linha:
                     f.write(linha)
+                    
 
                     
-questao_07()
-                
+
+def questao_08():
+    with open ('./trabalhar com arquivos/datatran2020.csv', 'r', encoding='utf-8') as acidentes_tot:
+        conteudo=acidentes_tot.readlines()
+    cont=0
+    for i in conteudo:
+        if 'Não Informado' in i:
+            cont+=1
+    print(f'Não foram informados {cont} dados em todo registro')
+    
+
+print(len(colunas()))
+    
