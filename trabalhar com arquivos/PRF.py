@@ -311,12 +311,75 @@ def questao_13():
     
         
         
-questao_13()
+def questao_14():
+    bd=ler_datatran2020()
+    dicio_acidentes_semana={}
+    dias_semana=set(bd['dia_semana'])
+    for dia in dias_semana:
+        dicio_acidentes_semana[dia]=0
+        
+    for dia in bd['dia_semana']:
+        dicio_acidentes_semana[dia]+=1
+        
+    
+    total=sum(dicio_acidentes_semana.values())
+    for dia in dicio_acidentes_semana:
+        dicio_acidentes_semana[dia]=dicio_acidentes_semana[dia]/total
+        dicio_acidentes_semana[dia]*=100
+        dicio_acidentes_semana[dia]= round(dicio_acidentes_semana[dia],3)
+        dicio_acidentes_semana[dia]=str(dicio_acidentes_semana[dia])+'%'
+        
+    
+    print('A frquencia de acidentes por dia da semana é: \n\n\n')
+    print(dicio_acidentes_semana)
 
 
 
+def questao_15():
+    bd=ler_datatran2020()
+    
+    for indice ,elemento in enumerate(bd['feridos']):
+        bd['feridos'][indice]= int(elemento)
+        
+    bd['feridos'].sort()
+    conjunto_feridos=set(bd['feridos'])
+
+    
+    dicio_feridos_por_acidente={}
+    for i in conjunto_feridos:
+        dicio_feridos_por_acidente[i]=0
+        
+    for elemento in bd['feridos']:
+        dicio_feridos_por_acidente[elemento]+=1
+    
+    
+    
+    total=sum(dicio_feridos_por_acidente.values())
+    cont=0
+    for feridos in dicio_feridos_por_acidente:
+        dicio_feridos_por_acidente[feridos]=dicio_feridos_por_acidente[feridos]/total
+        dicio_feridos_por_acidente[feridos]*=100
+        
+        cont+=dicio_feridos_por_acidente[feridos]
+        
+        dicio_feridos_por_acidente[feridos]=cont
+        dicio_feridos_por_acidente[feridos]= round(dicio_feridos_por_acidente[feridos],3)
+        
+        dicio_feridos_por_acidente[feridos]=str(dicio_feridos_por_acidente[feridos])+'%'
+        
+        
+    print('O seguinte dicionário contém a frequencia acumulada de feridos por acidentes:\n\n\n')
+    for feridos, quant in zip(dicio_feridos_por_acidente,dicio_feridos_por_acidente.values()):
+        print(f'{feridos} : {quant} ')
+        
 
 
+        
+    
+
+
+
+questao_15()
 
 
 
