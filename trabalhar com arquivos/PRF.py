@@ -138,6 +138,8 @@ def questao_07():
 def questao_08():
     with open ('./trabalhar com arquivos/datatran2020.csv', 'r', encoding='utf-8') as acidentes_tot:
         conteudo=acidentes_tot.readlines()
+        # C:\Users\David Galhego\Desktop\Prog-1\trabalhar com arquivos\datatran2020.csv
+        # ./trabalhar com arquivos/datatran2020.csv
     cont=0
     for i in conteudo:
         if 'Não Informado' in i:
@@ -145,5 +147,177 @@ def questao_08():
     print(f'Não foram informados {cont} dados em todo registro')
     
 
-print(len(colunas()))
+
+def questao_9():
+    with open ('./trabalhar com arquivos/datatran2020.csv', 'r', encoding='utf-8') as acidentes_tot:
+        # conteudo=acidentes_tot.readlines()
+        # del conteudo[0]
+        
+        data = [linha.split(',') for linha in acidentes_tot]
+        
+        numero_de_nulos=0
+        coluna_max_nulos=0
+        
+        for coluna in range(len(data[0])):
+            cont=0
+            for linha in range(len(data)):
+                if data[linha][coluna] == 'Não Informado':
+                    cont+=1
+                    
+            if cont > numero_de_nulos:
+                numero_de_nulos= cont
+                coluna_max_nulos= coluna
+       
+                        
+    print(f"A coluna com mais dados não informados foi a coluna '{data[0][coluna_max_nulos]}' com {numero_de_nulos} dados não informados")
+    
+    
+                
+             
+def questao_10():
+    base= ler_datatran2020()        
+    lista=base["feridos"]
+    # for i in range(len(lista)):
+    #     lista[i]=int(lista[i])
+    # print('O maximo é ', max(lista))
+    max_feridos=0
+    indice_max=0
+    for indice,feridos in enumerate(lista):
+        feridos=int(feridos)
+        if max_feridos<feridos:
+            max_feridos=feridos
+            indice_max=indice
+            
+        if 43 == feridos:
+            print(feridos, indice)
+        
+        
+            
+            
+    print(max_feridos)
+    print(indice_max)
+    print(f'O indice do acidente com mais feridos é {lista.index("44")}')
+    print(f'O estado com o acidende com mais ferimentes é {base["uf"][lista.index("44")]}')
+    
+
+def questao_11():
+    bd=ler_datatran2020()
+
+    estados=set((bd['uf']))
+    dic_estados_mortes={}
+    dic_estados_media_mortes={}
+    dic_estados_media_feridos={}
+    dic_estados_media_ilesos={}
+    
+    
+    for uf in estados:
+        dic_estados_mortes[uf]=0
+        dic_estados_media_feridos[uf]=0
+        dic_estados_media_ilesos[uf]=0
+        
+    for uf in estados:
+        
+        
+        for estado_atual, mortos in zip(bd['uf'], bd['mortos']):
+            
+            if uf == estado_atual:
+                
+                mortos=int(mortos)
+                dic_estados_mortes[uf]+=mortos
+            
+        dic_estados_media_mortes[uf]= dic_estados_mortes[uf]/(bd['uf'].count(uf))
+        
+        
+    
+    for uf in estados:
+        
+        
+        for estado_atual, feridos in zip(bd['uf'], bd['feridos']):
+            
+            if uf == estado_atual:
+                
+                feridos=int(feridos)
+                dic_estados_media_feridos[uf]+=feridos
+            
+        dic_estados_media_feridos[uf]= dic_estados_media_feridos[uf]/(bd['uf'].count(uf))
+    
+    
+    
+    for uf in estados:
+        
+        
+        for estado_atual, ilesos in zip(bd['uf'], bd['ilesos']):
+            
+            if uf == estado_atual:
+                
+                ilesos=int(ilesos)
+                dic_estados_media_ilesos[uf]+=ilesos
+            
+        dic_estados_media_ilesos[uf]= dic_estados_media_ilesos[uf]/(bd['uf'].count(uf))
+    
+    
+    
+        
+    print('A média de mortes por estado é a seguinte\n\n')   
+    print(dic_estados_media_mortes)
+    print('\n\n\nA média de feridos por estado é\n')
+    print(dic_estados_media_feridos)
+    print('\n\n\nA média de ilesos por estado é\n')
+    print(dic_estados_media_ilesos)
+    
+    
+    
+    
+def questao_12():
+    bd=ler_datatran2020()
+    estados=set((bd['uf']))
+    estados.remove('MG')
+    dic_acidentes_via_simples={}
+    for estado in estados:
+        dic_acidentes_via_simples[estado]=0
+    for estado, tipo_via in zip(bd['uf'],bd['tipo_pista']):
+        if tipo_via == 'Simples' and estado!='MG':
+            dic_acidentes_via_simples[estado]+=1
+    print(dic_acidentes_via_simples)
+    
+    print(f'O estado com mais acidentes em pistas simples é {max(dic_acidentes_via_simples, key = dic_acidentes_via_simples.get)} com {max(dic_acidentes_via_simples.values())} acidentes')
+        
+        
+    
+    
+def questao_13():
+    with open('./trabalhar com arquivos/datatran2020.csv', 'r', encoding='utf-8') as f:
+        conteudo=f.readlines()
+    conteudo[0]=conteudo[0].replace('data_inversa','data')
+    conteudo=[linha.split(',') for linha in conteudo]
+    
+    for i in range(1,len(conteudo)) :
+        teste=conteudo[i][1].split('-')
+        teste.reverse()
+        conteudo[i][1]=[teste[0],teste[1],teste[2]]
+        
+    sepador_virgula=','
+    for i in range(1,len(conteudo)):
+        
+        conteudo[i][1]=sepador_virgula.join(conteudo[i][1])
+        conteudo[i][1]=conteudo[i][1].replace(",",'-')
+    for i in range(len(conteudo)):
+        conteudo[i]=sepador_virgula.join(conteudo[i])
+    with open('./trabalhar com arquivos/datatran2020_data_normal.csv', 'w', encoding='utf-8') as f:
+        for linha in conteudo:
+            f.write(linha)
+        
+            
+    
+        
+        
+questao_13()
+
+
+
+
+
+
+
+
     
