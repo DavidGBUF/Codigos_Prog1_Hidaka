@@ -366,7 +366,7 @@ def busca_binaria_numero(lista, num):
         IndiceMax=len(lista_auxiliar)-1
         IndiceMin=0
         IndiceMedio=int((IndiceMax+IndiceMin)/2)
-        print(lista_auxiliar)
+        
         if len(lista_auxiliar)==0:
                 return False, comparaçoes
         
