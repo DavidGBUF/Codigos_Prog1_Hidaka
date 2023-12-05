@@ -17,13 +17,13 @@ import re
 
 
 # #Questão2==============================================
-# msg= "@...men%sag*em d3 t e#st)e"
-# regex= re.compile(r"[^A-Za-z\s]+")
-# saida = regex.sub("", msg)
-# print(saida)
+msg= "@...men%sag*em d3 t e#st)e"
+regex= re.compile(r"[^A-Za-z\s]+")
+saida = regex.sub("", msg)
+print(saida)
 
 
-#
+
  
  
  
