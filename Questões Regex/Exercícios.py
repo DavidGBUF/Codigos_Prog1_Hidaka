@@ -17,10 +17,10 @@ import re
 
 
 # #Questão2==============================================
-msg= "@...men%sag*em d3 t e#st)e"
-regex= re.compile(r"[^A-Za-z\s]+")
-saida = regex.sub("", msg)
-print(saida)
+# msg= "@...men%sag*em d3 t e#st)e"
+# regex= re.compile(r"[^A-Za-z\s]+")
+# saida = regex.sub("", msg)
+# print(saida)
 
 
 
@@ -30,7 +30,7 @@ print(saida)
 # #Questão4========================================
 # msg="mensagem de texte (91) 98118-1134 e esse teste 98118-1143" 
 # regex = re.compile(r"(\(\d{2}\)\s?)?\d{5}-?\d{4}")
-#         #            
+                   
 
 # numeros=[]
 
@@ -42,19 +42,19 @@ print(saida)
 # print(numeros)
         
 #Questão5==================================================
-# msg='1000011'
+# msg='0011100'
 # regex= re.compile(r"[1 0]+")
-# if regex.fullmatch(msg) and len(re.findall(r"1", msg))>=3:
-#     print("sucesso")
+# if regex.fullmatch(msg) and re.search(r"1.*1.*1", msg):
+#     print("Sucesso")
 
 
 
 # #Questão6==========================================
-# msg='10101010101010'
+# msg='101010101011010'
 # regex= re.compile(r"[1 0]+")
 
 # if regex.fullmatch(msg) and not re.search(r"11", msg):
-#     print("sucesso")
+#     print("Sucessoooo")
 
 
 
@@ -73,16 +73,16 @@ print(saida)
 # def verificar_expressão(expressao):
     
 
-#     regex= re.compile(r'^\s*\d+(\s*[\+\-\*\/]\s*\d+)*$')
+#     regex= re.compile(r'^\s+\d+(\s*[\+\-\*\/]\s*\d+)*$')
 #     resultado= regex.match(expressao) 
 #     return resultado is not None
 
 
-# print(verificar_expressão('15+165+156+154-4585*142*18/8458/5'))
+# print(verificar_expressão('  15 + 165+156+154-4585*142*18/8458/5'))
 # #Questão9==============================
-# msg="""A chuva não mata, mas molha. O amor não se vê, sente. A amizade não se compra, constrói.
+# msg=""" A chuva não Mata, mas molha. O amor não se vê, sente. A amizade não se compra, constrói.
 # E pessoas como você não se esquecem, guarda-se no fundo do coração."""
-# regex = re.compile(r"[A-Z]\w*")
+# regex = re.compile(r"\s[A-ZÃ]\w*")
 # for item in regex.finditer(msg):
 #     print(item)
 #     print(item.span())
@@ -90,11 +90,11 @@ print(saida)
 
 
 # #Questão10==================================
-# msg="ACTGATG"
+# msg="ACTGACTG"
 
 # saida = re.fullmatch(r"[ATCG]+", msg) and\
-#     len(re.findall(r"AC", msg))>=2 and\
-#         len(re.findall(r"TG",msg ))>=2
+#     re.search(r"(AC(.*)){2,}", msg) and\
+#         re.search(r"(TG(.*)){2,}", msg)
         
 # if saida:
 #     print('A string passou no teste')
@@ -106,72 +106,72 @@ print(saida)
 
 
 #Questão 3===================================================================
-def verificar_muito_forte(msg):
-    if len(msg)>=10 and\
-    re.search(r"[\d]",msg) and \
-    re.search(r"[A-Z]",msg) and\
-    re.search(r"[a-z]",msg) and\
-    re.search(r".*[^A-Z a-z \d].*[^A-Z a-z \d].*[^A-Z a-z \d].*",msg):
-        return True
+# def verificar_muito_forte(msg):
+#     if len(msg)>=10 and\
+#     re.search(r"[\d]",msg) and \
+#     re.search(r"[A-Z]",msg) and\
+#     re.search(r"[a-z]",msg) and\
+#     re.search(r"[^\w]{3,}",msg):
+#         return True
 
+
+
+# #============================================================================
+
+# def verificar_forte(msg):
+#     if len(msg)>=8 and\
+#      re.search(r"[\d]",msg) and \
+#      re.search(r"[A-Z]",msg) and\
+#      re.search(r"[a-z]",msg) and\
+#      re.search(r"[!@#$%&*+=]",msg):
+#         return True
+
+
+
+
+# #============================================================================
+
+
+# def verificar_moderada(msg):
+#     if len(msg)>=6 and\
+#      re.search(r"[\d]",msg) and \
+#      re.search(r"[A-Z]",msg) and\
+#      re.search(r"[a-z]",msg):
+#         return True
+
+
+
+# #============================================================================
+
+# def verificar_fraca(msg):
+#     if len(msg)>=6:
+#         return True
+
+
+# msg='Liseuwdeug@@@13427463'    
 
 
 #============================================================================
 
-def verificar_forte(msg):
-    if len(msg)>=8 and\
-     re.search(r"[\d]",msg) and \
-     re.search(r"[A-Z]",msg) and\
-     re.search(r"[a-z]",msg) and\
-     re.search(r"[!@#$%&*+=]",msg):
-        return True
 
 
+# print(f"A senha é {msg} e:")
+# if verificar_muito_forte(msg):
+#     print("A senha é muito forte")
+
+# elif verificar_forte(msg):
+#     print("A senha é forte")
 
 
-#============================================================================
+# elif verificar_moderada(msg):
+#     print("A senha é moderada")
 
 
-def verificar_moderada(msg):
-    if len(msg)>=6 and\
-     re.search(r"[\d]",msg) and \
-     re.search(r"[A-Z]",msg) and\
-     re.search(r"[a-z]",msg):
-        return True
+# elif verificar_fraca(msg):
+#     print("A senha é fraca")
 
-
-
-#============================================================================
-
-def verificar_fraca(msg):
-    if len(msg)>=6:
-        return True
-
-
-msg='liseuwdeug!@!!@!@gheu13427463'    
-
-
-#============================================================================
-
-
-
-print(f"A senha é {msg} e:")
-if verificar_muito_forte(msg):
-    print("A senha é muito forte")
-
-elif verificar_forte(msg):
-    print("A senha é forte")
-
-
-elif verificar_moderada(msg):
-    print("A senha é moderada")
-
-
-elif verificar_fraca(msg):
-    print("A senha é fraca")
-
-else:
-    print("A senha é inválida")
+# else:
+#     print("A senha é inválida")
 
 
 
